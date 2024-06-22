@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <title>Document</title>
+  <link rel="stylesheet" href="../css/post.css">
 </head>
 <body>
-  <h2>정보처리기사 오답노트</h2>
+  <h2>정보처리기사 오답노트 - 240622</h2>
   <ul>
     <li class="case">
       <h3>유스케이스(Use case) 구성요소 간의 관계</h3>
@@ -71,29 +71,63 @@
       <h3>병행제어 기법</h3>
       <div>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>로킹(Locking)</li>
+          <li>2단계 로킹 규약(Two-Phase Locking, 2PL)</li>
+          <li>타임스탬프 순서(Timestamp ordering)</li>
+          <li>낙관적 병행 제어(Optimistic Concurrency Control)</li>
+          <li>다중 버전 병행 제어(Multi-version Concurrency Control)</li>
         </ul>
       </div>
     </li>
     <li class="case">
-      <h3></h3>
-      <div></div>
+      <h3>관계대수 연산자</h3>
+      <div>
+        <table class="table">
+          <tr>
+            <th>연산자</th>
+            <th>기호</th>
+            <th>표기법</th>
+          </tr>
+          <tr>
+            <td>SELECT</td>
+            <td>δ(시그마)</td>
+            <td>δ&lt;조건&gt;(R)</td>
+          </tr>
+          <tr>
+            <td>PROJECT</td>
+            <td>π(파이)</td>
+            <td>π&lt;리스트&gt;(R)</td>
+          </tr>
+          <tr>
+            <td>JOIN</td>
+            <td>⋈(보타이)</td>
+            <td>R⋈&lt;조건&gt;S</td>
+          </tr>
+          <tr>
+            <td>DIVISION</td>
+            <td>÷(나누기)</td>
+            <td>R÷S</td>
+          </tr>
+        </table>
+      </div>
     </li>
     <li class="case">
-      <h3></h3>
-      <div></div>
+      <h3>응집도</h3>
+      <div>
+        <p>기능적 > 순차적 > 교환적 > 시간적 > 논리적 > 우연적</p>
+      </div>
     </li>
     <li class="case">
-      <h3></h3>
-      <div></div>
-    </li>
-    <li class="case">
-      <h3></h3>
-      <div></div>
+      <h3>IP CLASS</h3>
+      <div>
+        <ul>
+          <li>A class: 0.0.0.0 ~ 127.255.255.255</li> 
+          <li>B class: 128.0.0.0 ~ 191.255.255.255</li> 
+          <li>C class: 192.0.0.0 ~ 223.255.255.255</li> 
+          <li>D class: 224.0.0.0 ~ 239.255.255.255</li> 
+          <li>E class: 240.0.0.0 ~ 255.255.255.255</li> 
+        </ul>
+      </div>
     </li>
   </ul>
 </body>

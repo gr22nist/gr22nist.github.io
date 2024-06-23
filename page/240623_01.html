@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/post.css">
+</head>
+<body>
+  <h2>SQLite 연습 문제 풀기</h2>
+
+  <ul>
+    <li>
+      <h3>1. 미국 이외의 고객을 보여주는 쿼리 (고객의 전체 이름, 고객 ID, 국가 포함).</h3>
+      <p>SELECT FirstName || ' ' || LastName AS FullName, CustomerId, Country FROM customers;</p>
+    </li>
+    <li>
+      <h3>2. 브라질 고객만을 보여주는 쿼리</h3>
+      <p>SELECT FirstName || ' ' || LastName AS FullName, Country FROM customers WHERE Country = 'Brazil';</p>
+    </li>
+    <li>
+      <h3>3. 브라질 고객의 인보이스를 보여주는 쿼리 (고객의 전체 이름, 인보이스 ID, 인보이스 날짜, 청구 국가 포함)</h3>
+      <p>SELECT c.FirstName || ' ' || c.LastName AS FullName,
+        i.InvoiceId,
+        i.InvoiceDate,
+        i.BillingCountry
+    FROM
+        customers c
+    JOIN
+        invoices i ON c.CustomerId = i.CustomerId
+    WHERE
+        c.Country = 'Brazil'; </p>
+    </li>
+    <li>
+      <h3>4. 영업 사원인 직원들만을 보여주는 쿼리</h3>
+      <p>SELECT FirstName || ' ' || LastName AS FullName, title FROM employees WHERE title LIKE 'Sales%Agent';</p>
+    </li>
+    <li>
+      <h3>5. 인보이스 테이블에서 고유한 청구 국가의 목록을 보여주는 쿼리</h3>
+      <p>SELECT DISTINCT BillingCountry FROM invoices;</p>
+    </li>
+    <li>
+      <h3>6. 각 영업 사원과 연관된 인보이스를 보여주는 쿼리 (영업 사원의 전체 이름 포함)</h3>
+      <p>SELECT *FROM invoices WHERE BillingCountry = 'Brazil';</p>
+    </li>
+    <li>
+      <h3>7. 모든 인보이스와 고객에 대한 인보이스 총액, 고객 이름, 국가 및 영업 사원 이름을 보여주는 쿼리</h3>
+      <p>SELECT e.FirstName || ' ' || e.LastName AS SalesAgentName,
+        i.InvoiceId, i.InvoiceDate, i.BillingCountry
+    FROM
+        employees e
+    JOIN
+        customers c ON e.EmployeeId = c.SupportRepId
+    JOIN
+        invoices i ON c.CustomerId = i.CustomerId
+    WHERE
+        e.title = 'Sales Support Agent';
+    /p>
+    </li>
+    <li>
+      <h3>8. 2009년과 2011년에 인보이스가 몇 개 있었는지, 각 연도의 총 판매량을 보여주는 쿼리</h3>
+      <p>SELECT i.InvoiceId, i.InvoiceDate, i.BillingCountry,
+        c.FirstName || ' ' || c.LastName AS CustomerName, c.Country,
+        e.FirstName || ' ' || e.LastName AS SalesAgentName
+        
+        FROM
+            invoices i
+        JOIN
+            employees e ON c.SupportRepId = e.EmployeeId
+        JOIN
+            customers c ON i.CustomerId = c.CustomerId
+        WHERE
+            e.title = 'Sales Support Agent';</p>
+    </li>
+    <li>
+      <h3>9. InvoiceLine 테이블에서 인보이스 ID가 37인 항목 수를 COUNT하는 쿼리</h3>
+      <p>SELECT 
+        strfTime('%Y', InvoiceDate) AS Year,
+        COUNT(InvoiceId) AS InvoiceCount,
+        SUM(Total) AS TotalSales
+    FROM
+        invoices
+    WHERE
+        strfTime('%Y', InvoiceDate) IN ('2009', '2011')
+    GROUP BY
+        strfTime('%Y', InvoiceDate)
+    ORDER BY
+        Year;</p>
+    </li>
+    <li>
+      <h3>10. InvoiceLine 테이블에서 각 인보이스의 항목 수를 COUNT하는 쿼리 (힌트: GROUP BY 사용)</h3>
+      <p>SELECT COUNT(*) FROM InvoiceLine WHERE InvoiceId = 37;</p>
+    </li>
+  </ul>
+  
+    <div class="coment">깨달은 점 : JOIN의 개념이 아직은 어렵다. 세개 이상의 테이블이 겹치는 경우 조인의 스키마를 잘 확인해야 할 것 같다. 그리고 strfTime 의 사용법도 조금 더 숙지하기.</div>
+  </ul>
+</body>
+</html>

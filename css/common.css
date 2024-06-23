@@ -1,0 +1,28 @@
+/* reset */
+body {
+  font-family: 'SUIT', sans-serif;
+  font-size: 16px;
+  color: #222324;
+  line-height: 1.4;
+}
+
+ul, li, div {
+  margin: 0;
+  padding: 0;
+}
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #00a163;
+  font-weight: 700;
+}
+
+table {
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+/* reset */

@@ -40,11 +40,11 @@
       <p>SELECT DISTINCT BillingCountry FROM invoices;</p>
     </li>
     <li>
-      <h3>6. 각 영업 사원과 연관된 인보이스를 보여주는 쿼리 (영업 사원의 전체 이름 포함)</h3>
+      <h3>6. 브라질 고객의 인보이스를 보여주는 쿼리</h3>
       <p>SELECT *FROM invoices WHERE BillingCountry = 'Brazil';</p>
     </li>
     <li>
-      <h3>7. 모든 인보이스와 고객에 대한 인보이스 총액, 고객 이름, 국가 및 영업 사원 이름을 보여주는 쿼리</h3>
+      <h3>7. 각 영업 사원과 연관된 인보이스를 보여주는 쿼리 (영업 사원의 전체 이름 포함)</h3>
       <p>SELECT e.FirstName || ' ' || e.LastName AS SalesAgentName,
         i.InvoiceId, i.InvoiceDate, i.BillingCountry
     FROM
@@ -58,7 +58,7 @@
     /p>
     </li>
     <li>
-      <h3>8. 2009년과 2011년에 인보이스가 몇 개 있었는지, 각 연도의 총 판매량을 보여주는 쿼리</h3>
+      <h3>8. 모든 인보이스와 고객에 대해 인보이스 총액, 고객 이름, 국가 및 영업 사원의 이름을 보여주는 쿼리</h3>
       <p>SELECT i.InvoiceId, i.InvoiceDate, i.BillingCountry,
         c.FirstName || ' ' || c.LastName AS CustomerName, c.Country,
         e.FirstName || ' ' || e.LastName AS SalesAgentName
@@ -73,7 +73,7 @@
             e.title = 'Sales Support Agent';</p>
     </li>
     <li>
-      <h3>9. InvoiceLine 테이블에서 인보이스 ID가 37인 항목 수를 COUNT하는 쿼리</h3>
+      <h3>9. 2009년과 2011년에 인보이스가 몇 개 있었는지, 각 연도의 총 판매량 쿼리</h3>
       <p>SELECT 
         strfTime('%Y', InvoiceDate) AS Year,
         COUNT(InvoiceId) AS InvoiceCount,
@@ -88,12 +88,20 @@
         Year;</p>
     </li>
     <li>
-      <h3>10. InvoiceLine 테이블에서 각 인보이스의 항목 수를 COUNT하는 쿼리 (힌트: GROUP BY 사용)</h3>
+      <h3>10. InvoiceLine 테이블을 보고 인보이스 ID가 37인 항목 수를 COUNT하는 쿼리</h3>
       <p>SELECT COUNT(*) FROM InvoiceLine WHERE InvoiceId = 37;</p>
+    </li>
+    <li>
+      <h3>11. 각 인보이스 항목에 트랙 이름을 포함하는 쿼리<h3>
+      <p></p>
     </li>
   </ul>
   
-    <div class="coment">깨달은 점 : JOIN의 개념이 아직은 어렵다. 세개 이상의 테이블이 겹치는 경우 조인의 스키마를 잘 확인해야 할 것 같다. 그리고 strfTime 의 사용법도 조금 더 숙지하기.</div>
+    <div class="coment">
+      <p>깨달은 점: JOIN의 개념이 아직은 어렵다. 세 개 이상의 테이블이 겹치는 경우 테이블의 스키마를 잘 확인해야 할 것 같다. 그리고 strfTime 의 사용법도 조금 더 숙지하기.</p>
+      <p>쿼리문이 길어져서 헷갈릴 때는 각 명령어 단위로 끊어서 작성하기.</p>
+      <p>작은 이슈: 샘플 DB에 invoiceline 테이블이 없어서 생성은 해봤지만 포린키로 가져오는 키 외엔 데이터가 없어서 다른 DB를 찾아봐야 해서 일단 중단!</p>
+    </div>
   </ul>
 </body>
 </html>

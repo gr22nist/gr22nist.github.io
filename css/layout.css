@@ -1,0 +1,16 @@
+/* index layout */
+
+.post_list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ccc;
+
+}
+
+.post_date {
+  padding: 4px;
+  border-radius: 2px;
+  background-color: #82b48d;
+  color: #fff;
+  font-size: 9px;
+  margin-left: 16px;
+}

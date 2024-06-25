@@ -16,8 +16,12 @@ ul, li {
 
 a {
   text-decoration: none;
-  color: #00a163;
   font-weight: 700;
+  color: #222324;
+}
+
+a:visited {
+  color: #222324;
 }
 
 table {

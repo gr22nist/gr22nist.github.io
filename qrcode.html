@@ -8,16 +8,27 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         #qrcode { margin-top: 20px; }
+        #download-btn { 
+            margin-top: 20px; 
+            padding: 10px 20px; 
+            background-color: #4CAF50; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h1>실시간 QR 코드 생성기</h1>
     <input type="text" id="text-input" placeholder="텍스트를 입력하세요">
     <div id="qrcode"></div>
+    <button id="download-btn">QR 코드 다운로드</button>
 
     <script>
         const textInput = document.getElementById('text-input');
         const qrcodeContainer = document.getElementById('qrcode');
+        const downloadBtn = document.getElementById('download-btn');
 
         textInput.addEventListener('input', function() {
             qrcodeContainer.innerHTML = '';
@@ -26,6 +37,19 @@
                 qr.addData(this.value);
                 qr.make();
                 qrcodeContainer.innerHTML = qr.createImgTag(5);
+                downloadBtn.style.display = 'inline-block';
+            } else {
+                downloadBtn.style.display = 'none';
+            }
+        });
+
+        downloadBtn.addEventListener('click', function() {
+            const img = qrcodeContainer.querySelector('img');
+            if (img) {
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = img.src;
+                link.click();
             }
         });
     </script>

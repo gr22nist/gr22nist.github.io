@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실시간 QR 코드 생성기</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #qrcode { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>실시간 QR 코드 생성기</h1>
+    <input type="text" id="text-input" placeholder="텍스트를 입력하세요">
+    <div id="qrcode"></div>
+
+    <script>
+        const textInput = document.getElementById('text-input');
+        const qrcodeContainer = document.getElementById('qrcode');
+
+        textInput.addEventListener('input', function() {
+            qrcodeContainer.innerHTML = '';
+            if (this.value) {
+                const qr = qrcode(0, 'M');
+                qr.addData(this.value);
+                qr.make();
+                qrcodeContainer.innerHTML = qr.createImgTag(5);
+            }
+        });
+    </script>
+</body>
+</html>
